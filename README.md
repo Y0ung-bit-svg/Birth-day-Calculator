@@ -36,7 +36,7 @@
 # Technologies Used
 <ul>
   <li>HTML</li>
-  <li>Bootstrap css</li>
+  <li>CSS</li>
   <li>Javascript</li>
 </ul>
 
