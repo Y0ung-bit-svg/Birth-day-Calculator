@@ -33,7 +33,7 @@
 </div>
 </div>
 
-# Technologies Used 
+# Technologies Used
 <ul>
   <li>HTML</li>
   <li>Bootstrap css</li>
