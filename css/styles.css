@@ -1,0 +1,86 @@
+body{
+  font-family: inherit;
+  background-image: url('https://www.sfconsultingbd.com/wp-content/uploads/2019/09/Culture-in-Ghana.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 23px;
+}
+h2{
+  font-size: 36px;
+  padding-top: 20px;
+}
+.container{
+  width: 80%;
+  margin: auto;
+}
+
+#year-input{
+  border-radius: 5px;
+  width: 60px;
+  height: 20px;
+  box-shadow: 2px 2px black;
+}
+
+#month-input{
+  border-radius: 5px;
+  width: 60px;
+  height: 20px;
+  box-shadow: 2px 2px black;
+}
+
+#day-input{
+  border-radius: 5px;
+  width: 60px;
+  height: 20px;
+  box-shadow: 2px 2px black;
+}
+
+#get-name{
+  border-radius: 5px;
+  color: black;
+  background-color: green;
+  text-align: center;
+  border: solid 2px silver;
+  width: 108px;
+  height: 32px;
+  font-size: 13px;
+  box-shadow: 2px 2px black;
+}
+
+#results{
+  text-align: center;
+}
+
+.content{
+  background-color:rgba(17, 206, 23, 0.6)
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
+  margin-bottom: auto;
+  padding-bottom: 20px;
+  box-shadow: 2px 2px black;
+  border-radius: 0.5%;
+  }
+
+  .research{
+    text-decoration: underline;
+    color: white;
+  }
+
+  .clear{
+    border-radius: 5px;
+    color: black;
+    background-color: green;
+    text-align: center;
+    border: solid 1px #black;
+    width: 108px;
+    height: 32px;
+    font-size: 13px;
+    box-shadow: 2px 2px black;
+  }
+
+  a:hover{
+    color: lightblue ;
+  }
+  
