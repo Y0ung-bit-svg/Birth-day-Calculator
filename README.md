@@ -66,5 +66,9 @@
 <li>Create a Pull Request</li>
 </ul>
 
+# CONTACT DETAILS 
+<p>You can provide feedback or raise any issues/ bugs through the following means
+   kelvinmuhindi73@gmail.com </p>
+   
 # LICENSE
 Completely free (MIT)! See [LICENSE.md](LICENSE.md) for more.
