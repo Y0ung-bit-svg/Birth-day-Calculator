@@ -1,161 +1,40 @@
-function getAkanName () {
-  let yearOfBirth = document.getElementById("year-input").value;
-  let monthOfBirth = Number(document.getElementById("month-input").value);
-  let dayOfBirth = Number(document.getElementById("day-input").value);
+var maleNames = ["Kwasi", "Kwandwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"]
+var femaleNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"]
+var dayOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-  let genders = document.getElementsByName("gender");
-
-  // function to get gender
-  function getGender () {
-    for (let gender of genders){
-      if (gender.checked){
-        return gender.value;
-      }
+function giveAkanName() {
+    var year = parseInt(document.getElementById("year").value);
+    var month = parseInt(document.getElementById("month").value);
+    var day = parseInt(document.getElementById("day").value);
+    var gender = getGender();
+    var date = new Date(year + "/" + month + "/" + day);
+    var dayBorn = date.getDay();
+    var akanName;
+    var validate = (year > 0 && (month > 0 && month <= 12) && (day > 0 && day <= 31));
+    var validateGender = (gender !== "male" && gender !== "female");
+    if (year <= 0) {
+        alert("please enter a valid year");
+    } else if (month <= 0 || month > 12) {
+        alert("month is between 1 and 12");
+    } else if (day <= 0 || day > 31) {
+        alert("Date is between 1 and 31");
+    } else if (validate == false) {
+        alert("try again wrong input!!");
     }
-  }
-
-  let myGenderValue = getGender();
-
-  console.log(myGenderValue);
-
-  // validation functions
-  function monthValidator () {
-    if (monthOfBirth < 1 || monthOfBirth > 12) {
-      return false;
-    } else {
-      return true;
+    if (gender === "male" && year > 0 && month > 0 && month < 13 && day > 0 && day < 32) {
+        akanName = maleNames[dayBorn];
+        alert("You were born on " + dayOfTheWeek[dayBorn] + " and your Akan name is " + akanName);
+    } else if (gender === "female" && year > 0 && month > 0 && month < 13 && day > 0 && day < 32) {
+        akanName = femaleNames[dayBorn];
+        alert("You were born on " + dayOfTheWeek[dayBorn] + " and your Akan name is " + akanName);
     }
-  }
+}
 
-  function dayValidator () {
-    if (monthOfBirth === 2 && Number(yearOfBirth)%4 === 0) {
-      if (dayOfBirth > 28 || dayOfBirth < 1) {
-        return false;
-      } else if (monthOfBirth === 2 && dayOfBirth > 29) {
-        return false;
-      } else if (monthOfBirth === 2 && dayOfBirth < 1) {
-        return false;
-      } else {
-        return true;
-      }
-    } else if (dayOfBirth < 1 || dayOfBirth > 31){
-      return false;
-    } else {
-      return true;
+function getGender() {
+    var gender = document.getElementsByName("gender");
+    for (i = 0; i < gender.length; i++) {
+        if (gender[i].checked) {
+            return (gender[i].value)
+        }
     }
-  }
-
-  //validation variables
-  let monthValid = monthValidator();
-  let dayValid = dayValidator();
-
-  //formula to determine day of birth (Sunday = 1, Monday = 2)etc..
-  let dayOfWeekNumber = Math.floor((((Number(yearOfBirth.slice(0,2))/4)-2*Number(yearOfBirth.slice(0,2))-1)+
-          ((5*Number(yearOfBirth.slice(2,4))/4))+((26*(monthOfBirth+1)/10))+dayOfBirth)%7);
-
-  //creating arrays of Akan names for males and females
-  let maleAkanNames = [
-    "Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Kwaku", "Yaw", "Kofi", "Kwame"
-  ];
-
-  let femaleAkanNames = [
-    "Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"
-  ];
-
-  //condition statement that validates input
-  if (myGenderValue == "male" && monthValid && dayValid){
-    switch (dayOfWeekNumber) {
-      case 1:
-        document.getElementById('result').textContent = "You were born on a Sunday: your Akan name is " + maleAkanNames[0];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 2:
-        document.getElementById('result').textContent = "You were born on a Monday: your Akan name is " + maleAkanNames[1];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 3:
-        document.getElementById('result').textContent = "You were born on a Tuesday: your Akan name is " + maleAkanNames[2];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 4:
-        document.getElementById('result').textContent = "You were born on a Wednesday: your Akan name is " + maleAkanNames[3];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 5:
-        document.getElementById('result').textContent = "You were born on a Thursday: your Akan name is " + maleAkanNames[4];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 6:
-        document.getElementById('result').textContent = "You were born on a Friday: your Akan name is " + maleAkanNames[5];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 7:
-        document.getElementById('result').textContent = "You were born on a Saturday: your Akan name is " + maleAkanNames[6];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 0:
-        document.getElementById('result').textContent = "You were born on a Sunday: your Akan name is " + maleAkanNames[0];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      default:
-        alert("mmh no Akan name for you");
-
-    }
-  } else if(myGenderValue == "female" && monthValid && dayValid) {
-    switch (dayOfWeekNumber) {
-      case 1:
-        document.getElementById('result').textContent = "You were born on a Sunday: your Akan name is " + femaleAkanNames[0];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 2:
-        document.getElementById('result').textContent = "You were born on a Monday: your Akan name is " + femaleAkanNames[1];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        alert("Kwadwo");
-        break;
-      case 3:
-        document.getElementById('result').textContent = "You were born on a Tuesday: your Akan name is " + femaleAkanNames[2];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 4:
-        document.getElementById('result').textContent = "You were born on a Wednesday: your Akan name is " + femaleAkanNames[3];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 5:
-        document.getElementById('result').textContent = "You were born on a Thursday: your Akan name is " + femaleAkanNames[4];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 6:
-        document.getElementById('result').textContent = "You were born on a Friday: your Akan name is " + femaleAkanNames[5];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 7:
-        document.getElementById('result').textContent = "You were born on a Saturday: your Akan name is " + femaleAkanNames[6];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      case 0:
-        document.getElementById('result').textContent = "You were born on a Sunday: your Akan name is " + femaleAkanNames[0];
-        document.getElementById('display-name').textContent = "Here is your Akan name: ";
-        return false;
-        break;
-      default:
-      alert("mmh no Akan name for you");
-      }
-    } else{
-      alert("You entered invalid month or day");
-    }
-  }
+}
